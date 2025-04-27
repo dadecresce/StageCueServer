@@ -2,8 +2,9 @@ name: CI
 
 on:
   push:
-    paths-ignore: [ '**/*.md' ]
-    branches: [ main ]
+    # Rimuoviamo il filtro 'branches' per far partire il CI su qualsiasi ramo
+    paths-ignore:
+      - '**/*.md'
   pull_request:
   workflow_dispatch:
 
