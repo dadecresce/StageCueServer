@@ -4,7 +4,21 @@ builds:
     main: ./cmd/server
     goos: [darwin, windows]
     goarch: [amd64]
+    ldflags:
+      - -X 'main.version={{ .Version }}'
 archives:
   - id: generic
     format: zip
     builds: [default]
+
+nfpms:             # build .rpm/.deb for Linux if necessario
+  - id: linux
+    builds: [default]
+
+dockers:           # eventuale container
+  - image_templates:
+      - "ghcr.io/{{ .Repo }}/stagecueserver:{{ .Tag }}"
+
+# Windows MSI con WiX
+changelog:
+  sort: asc

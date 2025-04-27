@@ -1,7 +1,8 @@
-# StageCueServer configuration file
+# config.sample.toml
+address   = ":8080"
+log_level = "info"
 
-# Address to listen on
-address = ":8080"
-
-# Log level: debug | info | warn | error
-log_level = "debug"
+# --- SFU specific (extend as you grow) ---
+# [sfu]
+# udp_port = 50000
+# ice_lite = true
