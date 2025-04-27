@@ -1,0 +1,24 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-13, windows-latest]
+        go: ['1.22']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go }}
+      - run: go mod tidy
+      - run: go test ./... -cover
+      - run: |
+          if [[ $RUNNER_OS == 'Windows' ]]; then
+            go build -o StageCueServer.exe ./cmd/server
+          else
+            go build -o StageCueServer ./cmd/server
+          fi
