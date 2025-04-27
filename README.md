@@ -1,4 +1,4 @@
-# StageCueServer v0.2
+# StageCueServer v0.2.1
 
 This release introduces:
 
@@ -15,3 +15,4 @@ go build -o bin/StageCueServer ./cmd/server
 ```
 
 Visit [http://localhost:8080/healthz](http://localhost:8080/healthz) ⇒ `ok`
+// riprovo trigger CI
