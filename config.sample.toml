@@ -1,0 +1,7 @@
+# StageCueServer configuration file
+
+# Address to listen on
+address = ":8080"
+
+# Log level: debug | info | warn | error
+log_level = "debug"

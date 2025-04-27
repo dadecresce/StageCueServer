@@ -1,0 +1,10 @@
+project_name: StageCueServer
+builds:
+  - id: default
+    main: ./cmd/server
+    goos: [darwin, windows]
+    goarch: [amd64]
+archives:
+  - id: generic
+    format: zip
+    builds: [default]
