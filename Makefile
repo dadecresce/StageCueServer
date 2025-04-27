@@ -2,6 +2,14 @@ APP_NAME := StageCueServer
 VERSION  ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo "dev")
 LDFLAGS  := -X 'main.version=$(VERSION)' -s -w
 
+# Dipendenze native per chi costruisce i pacchetti
+DEPS = go
+
+.PHONY: deps
+deps:
+	go mod tidy
+
+
 .PHONY: build build-win build-all test run clean
 
 build:
