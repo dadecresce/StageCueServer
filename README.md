@@ -1,4 +1,4 @@
-# StageCueServer v0.1
+# StageCueServer v0.2
 
 This release introduces:
 
