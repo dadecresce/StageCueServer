@@ -16,9 +16,13 @@ jobs:
           go-version: ${{ matrix.go }}
       - run: go mod tidy
       - run: go test ./... -cover
-      - run: |
-          if [[ $RUNNER_OS == 'Windows' ]]; then
-            go build -o StageCueServer.exe ./cmd/server
-          else
-            go build -o StageCueServer ./cmd/server
-          fi
+
+      - name: Build on Windows
+        if: runner.os == 'Windows'
+        run: make build-win
+        shell: pwsh
+
+      - name: Build on macOS/Linux
+        if: runner.os != 'Windows'
+        run: make build
+        shell: bash
